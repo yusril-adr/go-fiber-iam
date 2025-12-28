@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://go.dev" target="blank"><img src="go.png" width="200" alt="Go Logo" /></a>
+  <a href="http://go.dev" target="blank"><img src="go.png" width="500" alt="Go Logo" /></a>
 </p>
 
 # IAM Service - Identity and Access Management
