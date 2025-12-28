@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="http://go.dev" target="blank"><img src="go.png" width="200" alt="Nest Logo" /></a>
+  <a href="http://go.dev" target="blank"><img src="go.png" width="200" alt="Go Logo" /></a>
 </p>
 
 # IAM Service - Identity and Access Management
@@ -11,6 +11,7 @@ A production-ready Identity and Access Management (IAM) service built with Go Fi
 - [Features](#features)
 - [Tech Stack](#tech-stack)
 - [Prerequisites](#prerequisites)
+- [Quick Start with Docker Compose](#quick-start-with-docker-compose)
 - [Installation & Setup](#installation--setup)
 - [Environment Configuration](#environment-configuration)
 - [Database Management](#database-management)
@@ -84,10 +85,75 @@ A production-ready Identity and Access Management (IAM) service built with Go Fi
 
 ## Prerequisites
 
+**Option 1: Using Docker (Recommended for Development)**
+- **Docker** and **Docker Compose**
+- **Go** 1.25 or higher
+- **Make** (optional, for using Makefile commands)
+
+**Option 2: Manual Installation**
 - **Go** 1.25 or higher
 - **PostgreSQL** 13+ (running instance)
 - **Redis** 6+ (for background jobs)
 - **Make** (optional, for using Makefile commands)
+
+## Quick Start with Docker Compose
+
+The easiest way to get started is using Docker Compose, which will set up PostgreSQL and Redis automatically.
+
+### What's Included
+
+The `docker-compose.yml` file includes:
+
+- **PostgreSQL 17** - Main database (port 5432)
+- **Redis 8.0.1** - Cache and job queue backend (port 6379)
+- **Mailpit** (optional, commented out) - Email testing tool (ports 8025, 1025)
+
+### Starting Services
+
+Start PostgreSQL and Redis:
+
+```bash
+docker-compose up -d
+```
+
+The `-d` flag runs containers in detached mode (background).
+
+### Verify Services are Running
+
+```bash
+docker-compose ps
+```
+
+### Stopping Services
+
+```bash
+docker-compose down
+```
+
+### Stopping and Removing Volumes (Clean Reset)
+
+```bash
+docker-compose down -v
+```
+
+**Warning**: This will delete all data in PostgreSQL and Redis.
+
+### Accessing Services
+
+- **PostgreSQL**: `localhost:5432`
+  - Username: `postgres`
+  - Password: `postgres`
+- **Redis**: `localhost:6379`
+
+### Enabling Mailpit (Optional)
+
+For email testing, uncomment the `mailpit` service in `docker-compose.yml`, then:
+
+```bash
+docker-compose up -d
+```
+
+Access Mailpit web UI at `http://localhost:8025`
 
 ## Installation & Setup
 
@@ -113,6 +179,18 @@ cp .env.example .env
 ```
 
 Edit `.env` with your configuration (see [Environment Configuration](#environment-configuration) section for details).
+
+### Step 3.5: Start Services (Docker Users Only)
+
+**If using Docker Compose**, start PostgreSQL and Redis:
+
+```bash
+docker-compose up -d
+```
+
+This will start PostgreSQL and Redis containers in the background. You can now proceed to Step 4.
+
+**If not using Docker**, ensure PostgreSQL and Redis are installed and running before proceeding.
 
 ### Step 4: Database Setup
 
