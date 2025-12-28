@@ -26,8 +26,7 @@ func CreateUser(dto *params.UserCreate) results.UserResult {
 	}
 
 	// Hash password
-	// var hashedPassword = utils.HashPassword(dto.Password)
-	var hashedPassword = "dummy"
+	var hashedPassword = utils.HashPassword(dto.Password)
 	user := iamModel.User{
 		Name:     dto.Name,
 		Email:    dto.Email,
