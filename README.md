@@ -1,3 +1,7 @@
+<p align="center">
+  <a href="http://go.dev" target="blank"><img src="go.png" width="200" alt="Nest Logo" /></a>
+</p>
+
 # IAM Service - Identity and Access Management
 
 A production-ready Identity and Access Management (IAM) service built with Go Fiber, featuring JWT-based authentication, permission-based authorization, and comprehensive user management capabilities.
