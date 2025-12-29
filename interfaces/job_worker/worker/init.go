@@ -7,8 +7,6 @@ import (
 	"github.com/sirupsen/logrus"
 
 	asyncqintegration "iam-service/infrastructure/integrations/asyncq"
-	authWorker "iam-service/interfaces/job_worker/modules/iam/auth"
-	authJobs "iam-service/modules/iam/auth/jobs"
 )
 
 func StartListen() {
@@ -21,7 +19,8 @@ func StartListen() {
 
 	// mux maps a type to a handler
 	mux := asynq.NewServeMux()
-	mux.HandleFunc(authJobs.TypeClearExpiredToken, authWorker.ClearExpiredTokenHandler)
+
+	RegisterHandlers(mux)
 
 	logrus.Info("Scheduler Worker server running ...")
 

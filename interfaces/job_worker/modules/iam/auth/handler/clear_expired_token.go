@@ -1,4 +1,4 @@
-package auth
+package authhandler
 
 import (
 	"context"
@@ -9,7 +9,7 @@ import (
 	authService "iam-service/modules/iam/auth/services"
 )
 
-func ClearExpiredTokenHandler(ctx context.Context, t *asynq.Task) error {
+func ClearExpiredToken(ctx context.Context, t *asynq.Task) error {
 	logrus.Info("Clearing expired token...")
 	authService.ClearExpiredToken()
 

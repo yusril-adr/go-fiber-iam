@@ -139,3 +139,8 @@ func SignOut(refreshToken string) {
 
 	authRepository.DeleteTokenWithUserId(refreshToken, payload.Id, nil)
 }
+
+func ClearExpiredToken() {
+	today := time.Now()
+	authRepository.DeleteTokenWithExpiredAt(today, nil)
+}

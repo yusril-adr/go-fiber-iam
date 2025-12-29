@@ -449,9 +449,20 @@ go-fiber-iam/
 │   │   │
 │   │   └── app_route.go # Main route registration
 │   │
+│   ├── scheduler/        # Background job scheduler
+│   │   ├── modules/iam/auth/     # Auth scheduled jobs
+│   │   │   └── registerer.go     # Module scheduler registration
+│   │   └── main.go               # Scheduler entry point
+│   │
 │   └── job_worker/      # Background job worker
-│       ├── modules/     # Job handlers
-│       └── worker/      # Worker initialization
+│       ├── modules/iam/auth/     # Auth job handlers
+│       │   ├── handler/          # Handler implementations
+│       │   │   └── clear_expired_token.go
+│       │   └── registerer.go     # Module handler registration
+│       ├── worker/               # Worker initialization
+│       │   ├── init.go           # Worker server setup
+│       │   └── registerer.go     # Global handler registration
+│       └── main.go               # Job worker entry point
 │
 ├── migrations/          # Database migrations
 │   └── main_db/        # Main database migrations
