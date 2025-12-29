@@ -32,12 +32,11 @@ func DeleteTokenWithUserId(token string, userId uuid.UUID, transaction *gorm.DB)
 	}
 }
 
-func DeleteExpiredTokens(transaction *gorm.DB) {
+func DeleteTokenWithExpiredAt(expiredAt time.Time, transaction *gorm.DB) {
 	connection := utils.If(transaction != nil, transaction, maindb.Connection)
-
 	res := connection.
 		Unscoped().
-		Where("expires_at <= ?", time.Now()).
+		Where("expires_at <= ?", expiredAt).
 		Delete(&iamModel.UserToken{})
 
 	err := res.Error

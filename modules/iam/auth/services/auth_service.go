@@ -139,7 +139,3 @@ func SignOut(refreshToken string) {
 
 	authRepository.DeleteTokenWithUserId(refreshToken, payload.Id, nil)
 }
-
-func ClearExpiredToken() {
-	authRepository.DeleteExpiredTokens(nil)
-}
